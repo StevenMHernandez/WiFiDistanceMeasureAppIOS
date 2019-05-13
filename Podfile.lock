@@ -1,0 +1,30 @@
+PODS:
+  - Charts (3.3.0):
+    - Charts/Core (= 3.3.0)
+  - Charts/Core (3.3.0)
+  - CocoaAsyncSocket (7.6.3)
+  - RxBluetoothKit (5.2.0):
+    - RxSwift (~> 4.5)
+  - RxSwift (4.5.0)
+
+DEPENDENCIES:
+  - Charts
+  - CocoaAsyncSocket
+  - RxBluetoothKit
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+    - Charts
+    - CocoaAsyncSocket
+    - RxBluetoothKit
+    - RxSwift
+
+SPEC CHECKSUMS:
+  Charts: ec1f57f9340054155691e84d4544a1d239d382c5
+  CocoaAsyncSocket: eafaa68a7e0ec99ead0a7b35015e0bf25d2c8987
+  RxBluetoothKit: a490bd8cdf7ad592c409daf420a6314670fe5871
+  RxSwift: f172070dfd1a93d70a9ab97a5a01166206e1c575
+
+PODFILE CHECKSUM: 067262f3e0a5cc8c8a77a0d0f1c32fc0c91c0eb1
+
+COCOAPODS: 1.6.0.beta.1

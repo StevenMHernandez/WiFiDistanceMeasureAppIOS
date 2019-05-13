@@ -7,14 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AEDDDB2F600E5D398A3A1FE7 /* Pods_WifiDistanceMeasureApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F80D48BB5E86CEC0ED30787A /* Pods_WifiDistanceMeasureApp.framework */; };
 		B030A08522885380005814E8 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030A08422885380005814E8 /* AppDelegate.swift */; };
 		B030A08722885380005814E8 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030A08622885380005814E8 /* ViewController.swift */; };
 		B030A08A22885380005814E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B030A08822885380005814E8 /* Main.storyboard */; };
 		B030A08C22885380005814E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B030A08B22885380005814E8 /* Assets.xcassets */; };
 		B030A08F22885380005814E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B030A08D22885380005814E8 /* LaunchScreen.storyboard */; };
+		B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		ACB0B69C454743D46D4A88A5 /* Pods-WifiDistanceMeasureApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WifiDistanceMeasureApp.release.xcconfig"; path = "Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp.release.xcconfig"; sourceTree = "<group>"; };
 		B030A08122885380005814E8 /* WifiDistanceMeasureApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WifiDistanceMeasureApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B030A08422885380005814E8 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B030A08622885380005814E8 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -22,6 +25,9 @@
 		B030A08B22885380005814E8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B030A08E22885380005814E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B030A09022885380005814E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableLineChartView.swift; sourceTree = "<group>"; };
+		CBA2B134309375EC3D6A8350 /* Pods-WifiDistanceMeasureApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WifiDistanceMeasureApp.debug.xcconfig"; path = "Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp.debug.xcconfig"; sourceTree = "<group>"; };
+		F80D48BB5E86CEC0ED30787A /* Pods_WifiDistanceMeasureApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WifiDistanceMeasureApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,17 +35,28 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AEDDDB2F600E5D398A3A1FE7 /* Pods_WifiDistanceMeasureApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9C344241A4B2B04CD27E881E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F80D48BB5E86CEC0ED30787A /* Pods_WifiDistanceMeasureApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		B030A07822885380005814E8 = {
 			isa = PBXGroup;
 			children = (
 				B030A08322885380005814E8 /* WifiDistanceMeasureApp */,
 				B030A08222885380005814E8 /* Products */,
+				F6A94687923AA6436B4D36B4 /* Pods */,
+				9C344241A4B2B04CD27E881E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -54,6 +71,7 @@
 		B030A08322885380005814E8 /* WifiDistanceMeasureApp */ = {
 			isa = PBXGroup;
 			children = (
+				B030A0972289A89D005814E8 /* Views */,
 				B030A08422885380005814E8 /* AppDelegate.swift */,
 				B030A08622885380005814E8 /* ViewController.swift */,
 				B030A08822885380005814E8 /* Main.storyboard */,
@@ -64,6 +82,23 @@
 			path = WifiDistanceMeasureApp;
 			sourceTree = "<group>";
 		};
+		B030A0972289A89D005814E8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6A94687923AA6436B4D36B4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				CBA2B134309375EC3D6A8350 /* Pods-WifiDistanceMeasureApp.debug.xcconfig */,
+				ACB0B69C454743D46D4A88A5 /* Pods-WifiDistanceMeasureApp.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -71,9 +106,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B030A09322885380005814E8 /* Build configuration list for PBXNativeTarget "WifiDistanceMeasureApp" */;
 			buildPhases = (
+				AF7DE8854EB70FFF75C4495D /* [CP] Check Pods Manifest.lock */,
 				B030A07D22885380005814E8 /* Sources */,
 				B030A07E22885380005814E8 /* Frameworks */,
 				B030A07F22885380005814E8 /* Resources */,
+				996F281CBD6116E377696F1E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -130,6 +167,59 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		996F281CBD6116E377696F1E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
+				"${BUILT_PRODUCTS_DIR}/CocoaAsyncSocket/CocoaAsyncSocket.framework",
+				"${BUILT_PRODUCTS_DIR}/RxBluetoothKit/RxBluetoothKit.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CocoaAsyncSocket.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxBluetoothKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF7DE8854EB70FFF75C4495D /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-WifiDistanceMeasureApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B030A07D22885380005814E8 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -137,6 +227,7 @@
 			files = (
 				B030A08722885380005814E8 /* ViewController.swift in Sources */,
 				B030A08522885380005814E8 /* AppDelegate.swift in Sources */,
+				B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -280,16 +371,17 @@
 		};
 		B030A09422885380005814E8 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CBA2B134309375EC3D6A8350 /* Pods-WifiDistanceMeasureApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B4QBLLSCD;
+				DEVELOPMENT_TEAM = 7WUSKY23L2;
 				INFOPLIST_FILE = WifiDistanceMeasureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mowing.WifiDistanceMeasureApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenHdesigns.WifiDistanceMeasureApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -298,16 +390,17 @@
 		};
 		B030A09522885380005814E8 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = ACB0B69C454743D46D4A88A5 /* Pods-WifiDistanceMeasureApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 8B4QBLLSCD;
+				DEVELOPMENT_TEAM = 7WUSKY23L2;
 				INFOPLIST_FILE = WifiDistanceMeasureApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.mowing.WifiDistanceMeasureApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.stevenHdesigns.WifiDistanceMeasureApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
