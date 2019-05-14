@@ -11,18 +11,23 @@ import CocoaAsyncSocket
 import Charts
 
 
-class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegate, ChartViewDelegate {
+class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegate, ChartViewDelegate, BluetoothRssiDelegate {
     
     @IBOutlet weak var actualLineChart: UpdatableLineChartView!
     @IBOutlet weak var rssiLineChart: UpdatableLineChartView!
     @IBOutlet weak var accuracyLineChart: UpdatableLineChartView!
     
     var socket: GCDAsyncUdpSocket?
+    
+    var bluetoothRssiService = BluetoothRssiService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCharts()
+
+        bluetoothRssiService.delegate = self
+        bluetoothRssiService.setupBLE()
         
         #if targetEnvironment(simulator)
             socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.main)
@@ -39,7 +44,7 @@ class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegat
         // Setup the line chart view
         setup(chart: self.actualLineChart, label: "Encoder Position")
         setup(chart: self.rssiLineChart, label: "RSSI Value")
-        setup(chart: self.accuracyLineChart, label: "True Positive")
+        setup(chart: self.accuracyLineChart, label: "Accuracy")
     }
     
     func setup(chart: UpdatableLineChartView, label: String) {
@@ -72,7 +77,12 @@ class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegat
         let str = String(decoding: data, as: UTF8.self)
         let val = str.split(separator: "\n")[0]
         print(val)
-        self.actualLineChart.addData(Double(val)!, 0)
+        self.actualLineChart.addData(Double(val)!)
+    }
+    
+    func bluetoothRssi(value: Double) {
+        self.rssiLineChart.lastTime = value
+        self.rssiLineChart.addData(value)
     }
 
     @IBAction func onSaveDataButtonPressed(_ sender: Any) {
