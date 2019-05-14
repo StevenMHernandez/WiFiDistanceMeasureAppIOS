@@ -15,6 +15,7 @@
 		B030A08F22885380005814E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B030A08D22885380005814E8 /* LaunchScreen.storyboard */; };
 		B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */; };
 		B0E3B3A5228B7489005774BF /* BluetoothRssiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */; };
+		B0E3B3A8228B78D9005774BF /* UdpEncoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		B030A09022885380005814E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableLineChartView.swift; sourceTree = "<group>"; };
 		B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothRssiService.swift; sourceTree = "<group>"; };
+		B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdpEncoderService.swift; sourceTree = "<group>"; };
 		CBA2B134309375EC3D6A8350 /* Pods-WifiDistanceMeasureApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WifiDistanceMeasureApp.debug.xcconfig"; path = "Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F80D48BB5E86CEC0ED30787A /* Pods_WifiDistanceMeasureApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WifiDistanceMeasureApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -97,6 +99,7 @@
 			isa = PBXGroup;
 			children = (
 				B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */,
+				B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				B030A08722885380005814E8 /* ViewController.swift in Sources */,
 				B0E3B3A5228B7489005774BF /* BluetoothRssiService.swift in Sources */,
 				B030A08522885380005814E8 /* AppDelegate.swift in Sources */,
+				B0E3B3A8228B78D9005774BF /* UdpEncoderService.swift in Sources */,
 				B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

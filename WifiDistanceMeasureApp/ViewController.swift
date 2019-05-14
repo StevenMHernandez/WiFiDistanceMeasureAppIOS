@@ -7,19 +7,17 @@
 //
 
 import UIKit
-import CocoaAsyncSocket
 import Charts
 
 
-class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegate, ChartViewDelegate, BluetoothRssiDelegate {
+class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, BluetoothRssiDelegate, UdpEncoderServiceDelegate {
     
     @IBOutlet weak var actualLineChart: UpdatableLineChartView!
     @IBOutlet weak var rssiLineChart: UpdatableLineChartView!
     @IBOutlet weak var accuracyLineChart: UpdatableLineChartView!
     
-    var socket: GCDAsyncUdpSocket?
-    
     var bluetoothRssiService = BluetoothRssiService()
+    var udpEncoderService = UdpEncoderService()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,15 +27,8 @@ class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegat
         bluetoothRssiService.delegate = self
         bluetoothRssiService.setupBLE()
         
-        #if targetEnvironment(simulator)
-            socket = GCDAsyncUdpSocket(delegate: self, delegateQueue: DispatchQueue.main)
-            do {
-                try socket?.bind(toPort: 4201)
-                try socket?.beginReceiving()
-            } catch let err {
-                print("Error: ", err)
-            }
-        #endif
+        udpEncoderService.delegate = self
+        udpEncoderService.setupUDP()
     }
     
     func setupCharts() {
@@ -73,16 +64,14 @@ class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegat
         chart.start()
     }
     
-    func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
-        let str = String(decoding: data, as: UTF8.self)
-        let val = str.split(separator: "\n")[0]
-        print(val)
-        self.actualLineChart.addData(Double(val)!)
-    }
-    
     func bluetoothRssi(value: Double) {
         self.rssiLineChart.lastTime = value
         self.rssiLineChart.addData(value)
+    }
+    
+    func udpEncoder(value: Double) {
+        self.actualLineChart.lastTime = value
+        self.actualLineChart.addData(value)
     }
 
     @IBAction func onSaveDataButtonPressed(_ sender: Any) {
