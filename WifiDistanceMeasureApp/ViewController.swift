@@ -18,11 +18,16 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     
     var bluetoothRssiService = BluetoothRssiService()
     var udpEncoderService = UdpEncoderService()
+    var mailService = MailService()
+    
+    var timer: Timer?
+    var dataList = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupCharts()
+        setupTimer()
 
         bluetoothRssiService.delegate = self
         bluetoothRssiService.setupBLE()
@@ -36,6 +41,16 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
         setup(chart: self.actualLineChart, label: "Encoder Position")
         setup(chart: self.rssiLineChart, label: "RSSI Value")
         setup(chart: self.accuracyLineChart, label: "Accuracy")
+    }
+
+    func setupTimer() {
+        self.dataList.append("time,uuid,encoder,rssi\n")
+        self.timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+    }
+
+    @objc func timerAction() {
+        let deviceId = UIDevice.current.identifierForVendor!.uuidString
+        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.actualLineChart.lastTime),\(self.rssiLineChart.lastTime)\n")
     }
     
     func setup(chart: UpdatableLineChartView, label: String) {
@@ -75,8 +90,7 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     }
 
     @IBAction func onSaveDataButtonPressed(_ sender: Any) {
-        // TODO:
-        print("send mail. . .")
+        self.mailService.send(data: dataList, viewController: self)
     }
 }
 
