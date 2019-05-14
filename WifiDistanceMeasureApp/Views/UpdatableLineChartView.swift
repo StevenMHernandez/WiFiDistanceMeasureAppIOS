@@ -36,29 +36,25 @@ class UpdatableLineChartView: LineChartView {
     
     @objc func timerAction() {
         #if targetEnvironment(simulator)
-            lastTime += ceil(Double(arc4random()) / Double(UINT32_MAX) * 10) - 5
+            lastTime += round(Double(arc4random()) / Double(UINT32_MAX) * 10) - 5
         #endif
         self.addData(lastTime)
     }
     
     func addData(_ x: Double) {
+        let dataSetIndex = 0
         let diff = Double(Date().millisecondsSince1970()! - self.startMillis!)
-        self.data!.addEntry(ChartDataEntry(x: Double(diff), y: x), dataSetIndex: 0)
-        
-        self.xAxis.axisMinimum = diff - self.threshold
-        
 
-        if diff > self.threshold {
-            for i in 0..<self.data!.dataSets.count {
-                removeOldDataFor(datasetIndex: i)
-            }
-        }
+        self.data!.addEntry(ChartDataEntry(x: Double(diff), y: x), dataSetIndex: dataSetIndex)
+        self.xAxis.axisMinimum = diff - self.threshold
+        self.removeOldDataFor(datasetIndex: dataSetIndex)
+
         self.notifyDataSetChanged()
     }
     
     func removeOldDataFor(datasetIndex: Int) {
         let dset = self.data!.getDataSetByIndex(datasetIndex)!
-        if let e = dset.entryForIndex(0), e.x < (Double(Date().millisecondsSince1970()) - self.threshold) {
+        if let e = dset.entryForIndex(0), e.x < (Double(Date().millisecondsSince1970()) - Double(self.startMillis!) - self.threshold) {
             _ = dset.removeEntry(dset.entryForIndex(0)!)
         }
     }

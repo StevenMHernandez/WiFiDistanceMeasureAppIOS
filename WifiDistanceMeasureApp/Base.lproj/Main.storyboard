@@ -14,21 +14,67 @@
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WifiDistanceMeasureApp" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qDV-vd-3va" customClass="UpdatableLineChartView" customModule="WifiDistanceMeasureApp" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qDV-vd-3va" customClass="UpdatableLineChartView" customModule="WifiDistanceMeasureApp" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="20" width="375" height="190"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="8NS-cb-c04"/>
+                                </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HfN-Hb-I6W" customClass="UpdatableLineChartView" customModule="WifiDistanceMeasureApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="210" width="375" height="190"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="190" id="Ko4-vv-WM6"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DZI-7W-IJu" customClass="UpdatableLineChartView" customModule="WifiDistanceMeasureApp" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="400" width="375" height="100"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="y9q-cr-vgA"/>
+                                </constraints>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sIK-QA-ZEm">
+                                <rect key="frame" x="153" y="500" width="69" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="uYk-su-Fwb" userLabel="height = 20"/>
+                                </constraints>
+                                <state key="normal" title="Save Data"/>
+                                <connections>
+                                    <action selector="onSaveDataButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scb-Eu-uFs"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="qDV-vd-3va" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="7T1-PI-GDg"/>
+                            <constraint firstItem="HfN-Hb-I6W" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="8sI-DV-rTC"/>
+                            <constraint firstAttribute="trailing" secondItem="DZI-7W-IJu" secondAttribute="trailing" id="FYd-S2-rbI"/>
+                            <constraint firstItem="DZI-7W-IJu" firstAttribute="top" secondItem="HfN-Hb-I6W" secondAttribute="bottom" id="IW6-0Q-TRX"/>
+                            <constraint firstItem="qDV-vd-3va" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="Jah-dH-hya"/>
+                            <constraint firstItem="HfN-Hb-I6W" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="T2L-SM-hUk"/>
+                            <constraint firstItem="DZI-7W-IJu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="UFt-gp-E35"/>
+                            <constraint firstItem="sIK-QA-ZEm" firstAttribute="top" secondItem="DZI-7W-IJu" secondAttribute="bottom" id="V6W-Km-oty"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="sIK-QA-ZEm" secondAttribute="bottom" constant="8" id="Y8s-D2-byP"/>
+                            <constraint firstItem="HfN-Hb-I6W" firstAttribute="height" secondItem="qDV-vd-3va" secondAttribute="height" id="aMo-ua-xlK"/>
+                            <constraint firstItem="DZI-7W-IJu" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="beZ-Vy-sxD"/>
+                            <constraint firstItem="qDV-vd-3va" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eGQ-nW-CfP"/>
+                            <constraint firstItem="DZI-7W-IJu" firstAttribute="top" secondItem="HfN-Hb-I6W" secondAttribute="bottom" id="lYc-Xh-D8u"/>
+                            <constraint firstItem="HfN-Hb-I6W" firstAttribute="top" secondItem="qDV-vd-3va" secondAttribute="bottom" id="nBm-jP-5qV"/>
+                            <constraint firstItem="DZI-7W-IJu" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="qb9-zd-e3X"/>
+                            <constraint firstItem="sIK-QA-ZEm" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="wYs-uv-YW3"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="accuracyLineChart" destination="DZI-7W-IJu" id="fXA-O7-odc"/>
                         <outlet property="actualLineChart" destination="qDV-vd-3va" id="FGj-Qh-h9G"/>
+                        <outlet property="rssiLineChart" destination="HfN-Hb-I6W" id="j0q-vG-AuR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

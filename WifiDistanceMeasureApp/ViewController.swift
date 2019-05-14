@@ -14,6 +14,9 @@ import Charts
 class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegate, ChartViewDelegate {
     
     @IBOutlet weak var actualLineChart: UpdatableLineChartView!
+    @IBOutlet weak var rssiLineChart: UpdatableLineChartView!
+    @IBOutlet weak var accuracyLineChart: UpdatableLineChartView!
+    
     var socket: GCDAsyncUdpSocket?
 
     override func viewDidLoad() {
@@ -34,21 +37,47 @@ class ViewController: UIViewController, StreamDelegate, GCDAsyncUdpSocketDelegat
     
     func setupCharts() {
         // Setup the line chart view
-        self.actualLineChart.delegate = self
-        let set: LineChartDataSet = LineChartDataSet(entries: [ChartDataEntry](), label: "Encoder Position")
-        set.drawCirclesEnabled = false
-        self.actualLineChart.data = LineChartData(dataSets: [set])
-        self.actualLineChart.updateTimeInterval = 0.025
-        self.actualLineChart.threshold = 10000
-        self.actualLineChart.start()
-        self.actualLineChart.extraLeftOffset = 0.0
+        setup(chart: self.actualLineChart, label: "Encoder Position")
+        setup(chart: self.rssiLineChart, label: "RSSI Value")
+        setup(chart: self.accuracyLineChart, label: "True Positive")
+    }
+    
+    func setup(chart: UpdatableLineChartView, label: String) {
+        let setData: LineChartDataSet = LineChartDataSet(entries: [ChartDataEntry](), label: label)
+        setData.drawCirclesEnabled = false
+        setData.lineWidth = 2
+        setData.axisDependency = .right
+        setData.colors = [.blue]
+
+        chart.data = LineChartData(dataSets: [setData])
+        chart.updateTimeInterval = 0.025
+        chart.threshold = 10000
+        chart.extraLeftOffset = -30
+        chart.minOffset = 0
+        chart.leftAxis.drawLabelsEnabled = false
+        chart.legend.drawInside = true
+        chart.rightAxis.labelPosition = .insideChart
+        chart.legend.drawInside = true
+        chart.xAxis.drawGridLinesEnabled = false
+        chart.leftAxis.drawGridLinesEnabled = false
+        chart.rightAxis.drawGridLinesEnabled = false
+        chart.xAxis.drawLabelsEnabled = false
+        chart.drawBordersEnabled = false
+        chart.xAxis.drawAxisLineEnabled = false
+        chart.delegate = self
+        chart.start()
     }
     
     func udpSocket(_ sock: GCDAsyncUdpSocket, didReceive data: Data, fromAddress address: Data, withFilterContext filterContext: Any?) {
         let str = String(decoding: data, as: UTF8.self)
         let val = str.split(separator: "\n")[0]
         print(val)
-        self.actualLineChart.addData(Double(val)!)
+        self.actualLineChart.addData(Double(val)!, 0)
+    }
+
+    @IBAction func onSaveDataButtonPressed(_ sender: Any) {
+        // TODO:
+        print("send mail. . .")
     }
 }
 
