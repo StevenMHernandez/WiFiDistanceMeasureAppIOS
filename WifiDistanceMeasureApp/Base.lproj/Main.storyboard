@@ -44,7 +44,9 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="uYk-su-Fwb" userLabel="height = 20"/>
                                 </constraints>
-                                <state key="normal" title="Save Data"/>
+                                <state key="normal" title="Save Data">
+                                    <color key="titleColor" red="0.016804177310000001" green="0.19835099580000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
                                     <action selector="onSaveDataButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="scb-Eu-uFs"/>
                                 </connections>
@@ -72,8 +74,8 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
-                        <outlet property="accuracyLineChart" destination="DZI-7W-IJu" id="fXA-O7-odc"/>
-                        <outlet property="actualLineChart" destination="qDV-vd-3va" id="FGj-Qh-h9G"/>
+                        <outlet property="actualDistanceLineChart" destination="qDV-vd-3va" id="FGj-Qh-h9G"/>
+                        <outlet property="encoderPositionLineChart" destination="DZI-7W-IJu" id="fXA-O7-odc"/>
                         <outlet property="rssiLineChart" destination="HfN-Hb-I6W" id="j0q-vG-AuR"/>
                     </connections>
                 </viewController>

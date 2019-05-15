@@ -12,9 +12,9 @@ import Charts
 
 class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, BluetoothRssiDelegate, UdpEncoderServiceDelegate {
     
-    @IBOutlet weak var actualLineChart: UpdatableLineChartView!
+    @IBOutlet weak var actualDistanceLineChart: UpdatableLineChartView!
     @IBOutlet weak var rssiLineChart: UpdatableLineChartView!
-    @IBOutlet weak var accuracyLineChart: UpdatableLineChartView!
+    @IBOutlet weak var encoderPositionLineChart: UpdatableLineChartView!
     
     var bluetoothRssiService = BluetoothRssiService()
     var udpEncoderService = UdpEncoderService()
@@ -38,9 +38,9 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     
     func setupCharts() {
         // Setup the line chart view
-        setup(chart: self.actualLineChart, label: "Encoder Position")
+        setup(chart: self.actualDistanceLineChart, label: "Actual Distance (m)")
         setup(chart: self.rssiLineChart, label: "RSSI Value")
-        setup(chart: self.accuracyLineChart, label: "Accuracy")
+        setup(chart: self.encoderPositionLineChart, label: "Encoder Position")
     }
 
     func setupTimer() {
@@ -50,7 +50,7 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
 
     @objc func timerAction() {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
-        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.actualLineChart.lastTime),\(self.rssiLineChart.lastTime)\n")
+        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.actualDistanceLineChart.lastTime),\(self.rssiLineChart.lastTime)\n")
     }
     
     func setup(chart: UpdatableLineChartView, label: String) {
@@ -84,9 +84,14 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
         self.rssiLineChart.addData(value)
     }
     
+    func udpEncoder(distance: Double) {
+        self.actualDistanceLineChart.lastTime = distance
+        self.actualDistanceLineChart.addData(distance)
+    }
+    
     func udpEncoder(value: Double) {
-        self.actualLineChart.lastTime = value
-        self.actualLineChart.addData(value)
+        self.encoderPositionLineChart.lastTime = value
+        self.encoderPositionLineChart.addData(value)
     }
 
     @IBAction func onSaveDataButtonPressed(_ sender: Any) {
