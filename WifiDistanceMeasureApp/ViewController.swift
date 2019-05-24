@@ -44,13 +44,13 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     }
 
     func setupTimer() {
-        self.dataList.append("time,uuid,encoder,rssi")
+        self.dataList.append("time,uuid,encoder,distance,rssi")
         self.timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
 
     @objc func timerAction() {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
-        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.actualDistanceLineChart.lastTime),\(self.rssiLineChart.lastTime)")
+        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.encoderPositionLineChart.lastTime),\(self.actualDistanceLineChart.lastTime),\(self.rssiLineChart.lastTime)")
     }
     
     func setup(chart: UpdatableLineChartView, label: String) {

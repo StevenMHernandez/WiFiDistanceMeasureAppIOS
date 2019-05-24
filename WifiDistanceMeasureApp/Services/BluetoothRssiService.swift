@@ -51,17 +51,6 @@ class BluetoothRssiService {
             .subscribe({ _ in
                 print("powered on")
                 
-                let _ = self.centralManager.observeDisconnect()
-                    .subscribe({ event in
-                        if let (peripheral, _) = event.element {
-                            let uuid = peripheral.identifier
-                            if self.peripheralConnected[uuid] != nil {
-                                self.peripheralConnected[uuid] = nil
-                            }
-                            print("disconnected", uuid)
-                        }
-                    })
-                
                 _ = self.centralManager.scanForPeripherals(withServices: [bleServiceCBUUID], options: [CBCentralManagerScanOptionAllowDuplicatesKey : NSNumber(value: true)])
                     .subscribe(onNext: { scannedPeripheral in
                         if scannedPeripheral.rssi != 127 {
