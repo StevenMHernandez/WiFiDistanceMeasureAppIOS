@@ -14,9 +14,10 @@
 		B030A08C22885380005814E8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B030A08B22885380005814E8 /* Assets.xcassets */; };
 		B030A08F22885380005814E8 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B030A08D22885380005814E8 /* LaunchScreen.storyboard */; };
 		B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */; };
+		B04DC72A22BFBDBE0061603A /* test_model.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = B04DC72922BFBDBD0061603A /* test_model.mlmodel */; };
 		B0E3B3A5228B7489005774BF /* BluetoothRssiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */; };
 		B0E3B3A8228B78D9005774BF /* UdpEncoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */; };
-		B0E3B3AA228B7B13005774BF /* MailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0E3B3A9228B7B13005774BF /* MailService.swift */; };
+		B0F82CDB22D9037000F4FB7B /* DataCollectorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0F82CDA22D9037000F4FB7B /* DataCollectorService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,9 +30,10 @@
 		B030A08E22885380005814E8 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B030A09022885380005814E8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B030A0982289A8C3005814E8 /* UpdatableLineChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdatableLineChartView.swift; sourceTree = "<group>"; };
+		B04DC72922BFBDBD0061603A /* test_model.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; name = test_model.mlmodel; path = ../../../../../Desktop/test_model.mlmodel; sourceTree = "<group>"; };
 		B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluetoothRssiService.swift; sourceTree = "<group>"; };
 		B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UdpEncoderService.swift; sourceTree = "<group>"; };
-		B0E3B3A9228B7B13005774BF /* MailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MailService.swift; sourceTree = "<group>"; };
+		B0F82CDA22D9037000F4FB7B /* DataCollectorService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataCollectorService.swift; sourceTree = "<group>"; };
 		CBA2B134309375EC3D6A8350 /* Pods-WifiDistanceMeasureApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WifiDistanceMeasureApp.debug.xcconfig"; path = "Target Support Files/Pods-WifiDistanceMeasureApp/Pods-WifiDistanceMeasureApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F80D48BB5E86CEC0ED30787A /* Pods_WifiDistanceMeasureApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WifiDistanceMeasureApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -59,6 +61,7 @@
 		B030A07822885380005814E8 = {
 			isa = PBXGroup;
 			children = (
+				B04DC72922BFBDBD0061603A /* test_model.mlmodel */,
 				B030A08322885380005814E8 /* WifiDistanceMeasureApp */,
 				B030A08222885380005814E8 /* Products */,
 				F6A94687923AA6436B4D36B4 /* Pods */,
@@ -102,7 +105,7 @@
 			children = (
 				B0E3B3A4228B7489005774BF /* BluetoothRssiService.swift */,
 				B0E3B3A7228B78D9005774BF /* UdpEncoderService.swift */,
-				B0E3B3A9228B7B13005774BF /* MailService.swift */,
+				B0F82CDA22D9037000F4FB7B /* DataCollectorService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -242,12 +245,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B0E3B3AA228B7B13005774BF /* MailService.swift in Sources */,
 				B030A08722885380005814E8 /* ViewController.swift in Sources */,
+				B04DC72A22BFBDBE0061603A /* test_model.mlmodel in Sources */,
 				B0E3B3A5228B7489005774BF /* BluetoothRssiService.swift in Sources */,
 				B030A08522885380005814E8 /* AppDelegate.swift in Sources */,
 				B0E3B3A8228B78D9005774BF /* UdpEncoderService.swift in Sources */,
 				B030A0992289A8C3005814E8 /* UpdatableLineChartView.swift in Sources */,
+				B0F82CDB22D9037000F4FB7B /* DataCollectorService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -397,7 +401,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7WUSKY23L2;
 				INFOPLIST_FILE = WifiDistanceMeasureApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -417,7 +421,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 7WUSKY23L2;
 				INFOPLIST_FILE = WifiDistanceMeasureApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

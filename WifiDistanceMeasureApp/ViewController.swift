@@ -18,10 +18,9 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     
     var bluetoothRssiService = BluetoothRssiService()
     var udpEncoderService = UdpEncoderService()
-    var mailService = MailService()
+    var dataCollectorService = DataCollectorService()
     
     var timer: Timer?
-    var dataList = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,13 +43,13 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     }
 
     func setupTimer() {
-        self.dataList.append("time,uuid,encoder,distance,rssi")
-        self.timer = Timer.scheduledTimer(timeInterval: 0.025, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
+        self.dataCollectorService.newData(data: "time,uuid,encoder,distance,rssi\n")
+        self.timer = Timer.scheduledTimer(timeInterval: 0.05, target: self, selector: #selector(timerAction), userInfo: nil, repeats: true)
     }
 
     @objc func timerAction() {
         let deviceId = UIDevice.current.identifierForVendor!.uuidString
-        self.dataList.append("\(Date().millisecondsSince1970()!),\(deviceId),\(self.encoderPositionLineChart.lastTime),\(self.actualDistanceLineChart.lastTime),\(self.rssiLineChart.lastTime)")
+        self.dataCollectorService.newData(data: "\(Date().millisecondsSince1970()!),\(deviceId),\(self.encoderPositionLineChart.lastTime),\(self.actualDistanceLineChart.lastTime),\(self.rssiLineChart.lastTime)\n")
     }
     
     func setup(chart: UpdatableLineChartView, label: String) {
@@ -81,7 +80,57 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     
     func bluetoothRssi(value: Double) {
         self.rssiLineChart.lastTime = value
-        self.rssiLineChart.addData(value)
+//        self.rssiLineChart.addData(value)
+        
+        let lastIndex = myList.count - 1
+        
+        
+        // Rolling average of the previous `k` elements
+        var rolling_mean = value
+        var my_diff = 0.0
+
+//        let k = min(lastIndex, 15)
+//        if k > 0 {
+//            rolling_mean = 0.0
+//            for i in 0...k-1 {
+//                rolling_mean += self.myList[lastIndex - i]
+//            }
+//            print(rolling_mean)
+//            rolling_mean = rolling_mean / Double(k)
+//            my_diff = rolling_mean - self.myList[lastIndex]
+//        }
+
+        self.myList.append(value)
+        self.myRollingList.append(rolling_mean)
+        self.myDiffList.append(my_diff)
+//        print(rolling_mean, lastIndex, k)
+        self.rssiLineChart.addData(rolling_mean)
+//        let model = test_model()
+//        let my_num = 1
+//        let input = try? MLMultiArray(shape:[NSNumber(value: my_num)], dataType: .double)
+////        print(lastIndex)
+//        if lastIndex > my_num {
+//            for i in 0...(my_num-1) {
+//                input![i] = NSNumber(value: myDiffList[lastIndex - i])
+//            }
+//    //        input![0] = NSNumber(value: value)
+////            let output = try? model.prediction(input: input!)
+////    //        print(model.prediction(input: [-24.0]))
+////            if let y = output {
+//////                print(y.output)
+////                var best_value = -99.0
+////                var best_key = "none"
+////                for k in y.output.keys {
+////                    if y.output[k]! > best_value {
+////                        best_value = y.output[k]!
+////                        best_key = k
+////                    }
+////                }
+////
+////                statusLabel.text = best_key
+////
+////            }
+//        }
     }
     
     func udpEncoder(distance: Double) {
@@ -92,10 +141,6 @@ class ViewController: UIViewController, StreamDelegate, ChartViewDelegate, Bluet
     func udpEncoder(value: Double) {
         self.encoderPositionLineChart.lastTime = value
         self.encoderPositionLineChart.addData(value)
-    }
-
-    @IBAction func onSaveDataButtonPressed(_ sender: Any) {
-        self.mailService.send(data: dataList, viewController: self)
     }
 }
 

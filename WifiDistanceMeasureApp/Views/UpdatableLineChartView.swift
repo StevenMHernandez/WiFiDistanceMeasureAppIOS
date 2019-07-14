@@ -25,7 +25,9 @@ extension Date {
 
 class UpdatableLineChartView: LineChartView {
     var timer: Timer?
-    var updateTimeInterval = 1.0
+    var updateTimeInterval = 10.0
+    var refreshDisplayInterval: Int64 = 100
+    var lastRefresh = Date().millisecondsSince1970()!
     var threshold = 1000.0
     var startMillis = Date().millisecondsSince1970()
     var lastTime = 0.0
@@ -46,10 +48,13 @@ class UpdatableLineChartView: LineChartView {
         let diff = Double(Date().millisecondsSince1970()! - self.startMillis!)
 
         self.data!.addEntry(ChartDataEntry(x: Double(diff), y: x), dataSetIndex: dataSetIndex)
-        self.xAxis.axisMinimum = diff - self.threshold
-        self.removeOldDataFor(datasetIndex: dataSetIndex)
 
-        self.notifyDataSetChanged()
+        if Date().millisecondsSince1970()! > self.lastRefresh + refreshDisplayInterval {
+            self.lastRefresh = Date().millisecondsSince1970()!
+            self.removeOldDataFor(datasetIndex: dataSetIndex)
+            self.xAxis.axisMinimum = diff - self.threshold
+            self.notifyDataSetChanged()
+        }
     }
     
     func removeOldDataFor(datasetIndex: Int) {
